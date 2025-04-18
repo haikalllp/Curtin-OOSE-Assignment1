@@ -1,0 +1,50 @@
+--- Testing Build Structure ---
+-- Test 1 --
+Input 1 (Build Structure):
+Enter the grid row index: 4
+Enter the grid column index: 3
+Enter the number of floors: 2
+Enter the foundation type (slab/stilts): slab
+Enter the construction material (wood/stone/brick/concrete): stone
+
+Response 1:
+Structure can be built. Total cost: $271,336
+
+-- Test 2 --
+Input 2 (Build Structure):
+Enter the grid row index: 3
+Enter the grid column index: 4
+Enter the number of floors: 5
+Enter the foundation type (slab/stilts): stilts
+Enter the construction material (wood/stone/brick/concrete): brick
+
+Response 2:
+Structure can be built. Total cost: $150,000
+
+-- Test 3 --
+Input 3 (Build Structure):
+Enter the grid row index: 6
+Enter the grid column index: 2
+Enter the number of floors: 3
+Enter the foundation type (slab/stilts): slab
+Enter the construction material (wood/stone/brick/concrete): concrete
+
+Respone 3:
+Cannot build slab foundation on swampy terrain.
+
+
+--- Comparison with grid -7x7New.txt ---
+Test 1 (Row 4, Column 3):
+flat,height-limit=20,heritage=stone
+
+# The terrain is flat, the height limit is 20, and the heritage is stone. Entered 2 floors, it is below the height limit, and there are no constraints on the foundation or material. Therefore, the structure can be built.
+
+Test 2 (Row 3, Column 4):
+flat,heritage=stone,height-limit=13
+
+# The terrain is flat, with a height limit of 13, and heritage is stone. Entered 5 floors, which is within the height limit, and the foundation is stilts, which is compatible with flat terrain. in the program, the structure should be able to be built.
+
+Test 3 (Row 6, Column 2):
+swampy,flood-risk=68.211328,heritage=wood
+
+# The terrain is swampy, selected a slab foundation. program should identify that slab foundations cannot be built on swampy terrain.
